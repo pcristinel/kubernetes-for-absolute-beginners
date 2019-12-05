@@ -1,7 +1,7 @@
-# Todas las definiciones en Kubernetes tienen los siguientes campos siempre:
+# Todas las definiciones en Kubernetes tienen, como mínimo, los siguientes campos siempre:
 
 # apiVersion: Versión de la api de Kubernetes que queremos usar para crear el objeto
-#     POD: v1
+#     Pod: v1
 #     Service: v1
 #     ReplicaSet: apps/v1
 #     Deployment: apps/v1

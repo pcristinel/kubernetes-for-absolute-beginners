@@ -1,0 +1,20 @@
+# Replication Controller
+apiVersion: v1
+kind: ReplicationController
+metadata:
+    name: myapp-rc
+    labels:
+        app: myapp
+        type: front-end
+spec:
+    template: # En template indicamos la plantilla que tiene que usar para desplegar/replicar nuestros pods, es la definición de un pod.
+        metadata:
+            name: myapp-pod
+            labels:
+                app: myapp
+                type: front-end
+        spec:
+            containers:
+            - name: nginx-container
+              image: nginx
+    replicas: 3 # Indicamos el número de réplicas de nuestra aplicación

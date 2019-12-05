@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+    name: myapp-replicaset
+    labels:
+        app: myapp
+        type: front-end
+spec:
+    selector: # El selector es necesario para indicarle al controlador de ReplicaSet qué nombre de aplicación debe estar observando.
+        matchLabels:
+            type: front-end
+    template: # PodTemplate
+        metadata:
+            name: myapp-pod
+            labels:
+                app: myapp
+                type: front-end
+        spec:
+            containers:
+            - name: nginx-container
+              image: nginx
+    replicas: 3
