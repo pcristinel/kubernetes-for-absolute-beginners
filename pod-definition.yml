@@ -1,0 +1,33 @@
+# Todas las definiciones en Kubernetes tienen los siguientes campos siempre:
+
+# apiVersion: Versión de la api de Kubernetes que queremos usar para crear el objeto
+#     POD: v1
+#     Service: v1
+#     ReplicaSet: apps/v1
+#     Deployment: apps/v1
+
+# kind: Tipo de objeto a crear, puede ser:
+#     POD
+#     Service
+#     ReplicaSet
+#     Deployment
+
+apiVersion: v1
+kind: Pod
+# metadata: Información sobre el objeto (nombre, etiqueta, etc). Se define en forma de diccionario/mapa, ejemplo:
+metadata:
+# En metadata sólo podemos poner claves que kubernetes acepta/espera
+  name: myapp-pod #String value 
+  labels: #Diccionario/Mapa --> Usamos los labels (etiquetas) para identificar nuestros pods en caso de tener más de uno y así poder hacer filtrados más facilmente
+  # En labels podemos poner cualquier nombre para nuestra clave y cualquier valor
+    app: myapp #Etiqueta que identifica nuestra app
+    type: front-end
+
+# spec: Especificamos la imagen a usar cuando se crea el pod, versión, etc. Varía según el tipo de objeto que vamos a crear. Para saber el formato correcto hay que mirar en la documentación de kubernetes. Es un diccionario/mapa. Ejemplo:
+
+spec:
+  containers: # Es una lista. List/Array
+    - name: nginx-container #"-" indica que es un elemento en la lista, en este caso, el primero
+      image: nginx
+
+# Una vez definido el objeto a crear, se ejecuta el comando --> kubectl create -f pod-definition.yml
